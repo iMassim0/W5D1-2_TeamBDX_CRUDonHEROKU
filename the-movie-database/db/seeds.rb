@@ -6,21 +6,69 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 Movie.all.each do |m|
   m.destroy
 end
 
-
-films = [
-  ['Pulp-fiction', 1994, 'Tarantino'],
-  ['Gozilla', 1999, 'Mes couilles'],
-  ['Drive', 2010, 'Pinto'],
-  ['Rio', 2015, 'Pixar'],
-  ['Sous le même toit', 2017, "Arthur"]
-]
-
-films.each do |arr|
-  Movie.create(title: arr[0], release_year: arr[1], director: arr[2])
+Director.all.each do |m|
+  m.destroy
 end
 
+films = [
+  ['Pulp-fiction', 1994],
+  ['Gozilla', 1999],
+  ['Drive', 2010],
+  ['Rio', 2015],
+  ['Sous le même toit', 2017]
+]
+
+directors = [
+  ['Tarantino', 'Quentin'],
+  ['kiki', 'lulu'],
+  ['popo', 'cracra']
+]
+
+directors.each do |d|
+  lol = Director.create(first_name: d[0], last_name: d[1])
+  # puts lol.id
+end
+
+films.each do |arr|
+  lol = Movie.create(title: arr[0], release_year: arr[1])
+  # puts lol.id
+end
+
+tab = Director.all
+
+i = tab[-1].id
+# puts i
+j = 0
+# puts j
+
+Movie.all.each do |m|
+  temp = m
+  temp.director_id = tab[j].id
+  j += 0.5
+  i -= 1
+  temp.save
+end
+
+# koko = Movie.find(1)
+
+# puts koko.director_id
+
+# puts tab[-1].id
+
+# koko.director_id = tab[-1].id
+
+# koko.save
+
+# puts koko.director_id
+
+
+# Movie.find(2).director_id = tab[-1].id
+# Movie.find(3).director_id = tab[-1].id
+# Movie.find(4).director_id = tab[-1].id
+# Movie.find(5).director_id = tab[-1].id
+
+# Movie.all.director_id.save

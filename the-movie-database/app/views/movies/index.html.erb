@@ -1,5 +1,5 @@
 <h1>Salut les copains !</h1>
 
 <% @movies.each do |movie| %>
-    <p><%= movie.title %>, réalisé par <%= movie.director %>, sorti en <%= movie.release_year %></p>
+    <p><%= movie.title %>, réalisé par <%= movie.director_id %>, sorti en <%= movie.release_year %></p>
 <% end %>
