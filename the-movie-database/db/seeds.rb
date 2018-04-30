@@ -1,56 +1,55 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Remet à zéro toutes les entrées de la db précédement créées
+# Pour pouvoir remmetre à zéro les propres id aux movies et directors, effectuer un
+# $ rails db:reset
 
-Movie.all.each do |m|
-  m.destroy
-end
+Movie.destroy_all
+Director.destroy_all
 
-Director.all.each do |m|
-  m.destroy
-end
-
-# table = directors
-# auto_inc_val = 1
-# ActiveRecord::Base.connection.execute(
-#   "ALTER SEQUENCE #{table}_id_seq RESTART WITH #{auto_inc_val}"
-# )
-
-# Movie.destroy_all
-# Director.destroy_all
-
+# Choix de nos films
 
 films = [
-  ['Pulp-fiction', 1994],
-  ['Gozilla', 1999],
-  ['Drive', 2010],
-  ['Rio', 2015],
-  ['Sous le même toit', 2017]
+  ['Seul sur Mars', 2015],
+  ['Django', 2013],
+  ['Pulp Fiction', 1994],
+  ['La Grande Vadrouille', 1966],
+  ['La Soupe aux Choux', 1981]
 ]
+
+# Réalisateurs associés
 
 directors = [
-  ['Tarantino', 'Quentin'],
-  ['kiki', 'lulu'],
-  ['popo', 'cracra']
+  ['Ridley', 'SCOTT'],
+  ['Quentin', 'TARANTINO'],
+  ['Gérard', 'OURY'],
+  ['Jean', 'GIRAULT']
 ]
 
-directors.each do |d|
-  lol = Director.create(first_name: d[0], last_name: d[1])
+# Relations entre les films et les réalisateurs
+
+relations = [
+  1, 2, 2, 3, 4
+]
+
+# Création de toutes les occurences "directors"
+
+directors.each do |director|
+  Director.create(first_name: director[0], last_name: director[1])
 end
 
-films.each do |arr|
-  lol = Movie.create(title: arr[0], release_year: arr[1])
+# Création de toutes les occurences "movies"
+
+films.each do |film|
+  Movie.create(title: film[0], release_year: film[1])
 end
 
-tab = Director.all
-j = 0
+# Permet la relation entre les "movies" et "directors"
 
-Movie.all.each do |m|
-  m.director_id = tab[j].id
-  j += 0.5
-  m.save
+i = 1
+
+relations.each do |relation|
+  temp_movie = Movie.find(i)
+  temp_director = Director.find(relation)
+  temp_movie.director_id = temp_director.id
+  i += 1
+  temp_movie.save
 end
