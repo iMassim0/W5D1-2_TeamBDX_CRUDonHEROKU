@@ -1,9 +1,40 @@
 <div class="container">
 <h1>Gossip n°<%= @gossip.id %></h1>
-<p>Ecrit par <%= @gossip.anonymous_author %></p>
+<strong>Ecrit par <%= @gossip.anonymous_author %></strong>
 <p><%= @gossip.content %></p>
+  <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-outline-primary">Rétablis la vérité</a>
 </div>
+
 <div class="container">
-  <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-primary">Modifier le gossip</a>
+    <% @comments.each do |com| %>
+    <div class="form-control">
+      <p><strong><%= com.anonymous_commentor %></strong></p>
+      <p><%= com.body %></p>
+      <a href="<%= edit_gossip_comment_path(com.id) %>" class="btn btn-outline-info">Modifie ton com'</a>
+    </div>
+    <% end %>
+</div>
+
+
+
+<div class="container">
+  <%= form_for([@gossip, @comment], {action: "create"}) do |com| %>
+
+  <div class="form-group">
+      <label>Anonymous Commentor :</label><br>
+      <%= com.text_field :anonymous_commentor %><br>
+  </div>
+  <div class="form-group">
+      <label>Comment :</label><br>
+      <%= com.text_area :body, size: "50x3" %><br>
+  </div>
+  <div class="form-group">
+      <button type=submit class="btn btn-info">Lâche ton com'</button>
+  </div>
+
+  <% end %>
+</div>
+
+<div class="container">
   <a href="<%= gossips_path %>" class="btn btn-success">Retour à la liste</a>
 </div>
