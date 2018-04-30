@@ -14,6 +14,16 @@ Director.all.each do |m|
   m.destroy
 end
 
+# table = directors
+# auto_inc_val = 1
+# ActiveRecord::Base.connection.execute(
+#   "ALTER SEQUENCE #{table}_id_seq RESTART WITH #{auto_inc_val}"
+# )
+
+# Movie.destroy_all
+# Director.destroy_all
+
+
 films = [
   ['Pulp-fiction', 1994],
   ['Gozilla', 1999],
@@ -30,12 +40,10 @@ directors = [
 
 directors.each do |d|
   lol = Director.create(first_name: d[0], last_name: d[1])
-  # puts lol.id
 end
 
 films.each do |arr|
   lol = Movie.create(title: arr[0], release_year: arr[1])
-  # puts lol.id
 end
 
 tab = Director.all
