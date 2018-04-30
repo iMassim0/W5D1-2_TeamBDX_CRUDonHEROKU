@@ -39,36 +39,10 @@ films.each do |arr|
 end
 
 tab = Director.all
-
-i = tab[-1].id
-# puts i
 j = 0
-# puts j
 
 Movie.all.each do |m|
-  temp = m
-  temp.director_id = tab[j].id
+  m.director_id = tab[j].id
   j += 0.5
-  i -= 1
-  temp.save
+  m.save
 end
-
-# koko = Movie.find(1)
-
-# puts koko.director_id
-
-# puts tab[-1].id
-
-# koko.director_id = tab[-1].id
-
-# koko.save
-
-# puts koko.director_id
-
-
-# Movie.find(2).director_id = tab[-1].id
-# Movie.find(3).director_id = tab[-1].id
-# Movie.find(4).director_id = tab[-1].id
-# Movie.find(5).director_id = tab[-1].id
-
-# Movie.all.director_id.save
