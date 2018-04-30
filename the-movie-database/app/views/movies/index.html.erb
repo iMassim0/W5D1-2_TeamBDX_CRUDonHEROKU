@@ -1,9 +1,27 @@
 <h1>Salut les copains !</h1>
-<!--
-<% @movies.each do |movie| %> -->
-<!--     <p><%= movie.title %>, réalisé par <%= @directors.find(movie.director_id).first_name %>, sorti en <%= movie.release_year %></p>
-<% end %> -->
+<h2>Voici la liste de films de la Team BDX :</h2>
+<br>
 
-<% @movies.each do |movie| %>
-    <p><%= movie.title %>, réalisé par <%= movie.director.first_name %> <%= movie.director.last_name %>, sorti en <%= movie.release_year %></p>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom du film</th>
+      <th scope="col">Année de sortie</th>
+      <th scope="col">Réalisateur</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <th scope="row"><%= movie.id %></th>
+        <td><%= movie.title %></td>
+        <td><%= movie.release_year %></td>
+        <td><%= movie.director.first_name %> <%= movie.director.last_name %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+
+<!-- Organisation de la page principale ... simple ... -->
