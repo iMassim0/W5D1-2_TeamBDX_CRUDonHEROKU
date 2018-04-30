@@ -12,7 +12,7 @@ Le projet du jour consiste à aborder 2 notions :
 
 1 - Veuillez svp vous relever de votre PLS.
 
-2 - Veuillez cloner ce repo sur votre machine avec la commande suivante (le dossier créé s'appelera "W5D1_CRUD"):
+2 - Veuillez cloner ce repo sur votre machine avec la commande suivante (le dossier créé s'appelera "W5D1-2_TeamBDX_CRUDonHEROKU"):
 
 ```
   $ git clone https://github.com/iMassim0/the-movie-database
