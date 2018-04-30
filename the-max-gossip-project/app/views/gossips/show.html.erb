@@ -6,5 +6,6 @@
 
   <p>
     <a href="<%= gossips_path %>">Retour sur la page principale</a>
-
+    <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-default">Modifier le Gossip</a>
+    <a href="<%= gossip_path(@gossip.id) %>" class="btn btn-danger" data-method="DELETE" data-confirm="On supprime vraiment ?">Supprimer le Gossip</a>
   </p>
