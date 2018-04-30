@@ -15,7 +15,7 @@ class GossipsController < ApplicationController
   def show
     @gossip = Gossip.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.all
+    @comments = Comment.where(gossip_id: params[:id])
   end
 
   def edit

@@ -2,9 +2,10 @@
   <h1>Index des gossips</h1>
 
   <% @gossips.each do |gossip| %>
-    <h2><%= gossip.anonymous_author %></h2>
-    <p><%= gossip.content %></p>
-    <p><a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Lire la suite</a></p>
+    <h4><%= gossip.anonymous_author %></h4>
+    <span><%= gossip.content %></span>
+        <p class="text-muted"><%= gossip.comments.count %> com'</p>
+    <p><a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Voir les comms !</a></p>
   <% end %>
 
 </div>

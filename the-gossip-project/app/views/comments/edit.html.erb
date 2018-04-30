@@ -1,21 +1,22 @@
 <div class="container">
-<h1>C'est vraiment n'importe quoi ce com'...></h1>
+<h3>C'était vraiment n'importe quoi ce com'...</h3>
 
         <%= form_for @comment, url: {action: "update"} do |com| %>
 
         <div class="form-group">
-            <label>Anonymous author :</label><br>
-            <%= com.text_field :anonymous_commentor %><br>
+            <label>Pseudo :</label><br>
+            <%= com.text_field :anonymous_commentor, class: "text-muted" %><br>
         </div>
         <div class="form-group">
-            <label>Content :</label><br>
-            <%= com.text_area :body, size: "50x3" %><br>
+            <label>Crache ton venin...</label><br>
+            <%= com.text_area :body, size: "50x3", class: "text-muted" %><br>
         </div>
         <div class="form-group">
-            <button type=submit class="btn btn-primary">Ce com' a maintenant la classe !</button>
-        </div>
-        <div class="form-group">
-            <a href="<%= gossip_comments_path(@comment.id) %>" class="btn btn-danger" data-method="DELETE" data-confirm="C'est naze à ce point ?">Vire moi ça !</a>
+            <button type=submit class="btn btn-info">Ce com' a maintenant la classe !</button>
+              <%= link_to 'Vire moi ça !', [@comment.gossip, @comment], class: 'btn btn-danger',
+               method: :delete,
+               data: { confirm: 'Tu veux vraiment le virer ?' } %>
+            <a href="<%= gossips_path %>" class="btn btn-success">Retour aux gossips</a>
         </div>
 
         <% end %>

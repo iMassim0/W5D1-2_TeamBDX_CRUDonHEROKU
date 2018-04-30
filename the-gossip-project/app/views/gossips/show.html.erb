@@ -1,21 +1,20 @@
-<div class="container">
-<h1>Gossip n°<%= @gossip.id %></h1>
-<strong>Ecrit par <%= @gossip.anonymous_author %></strong>
+  <div class="container form-control border rounded border-primary">
+<h3>Gossip écrit par <strong><%= @gossip.anonymous_author %></strong> :</h3>
 <p><%= @gossip.content %></p>
-  <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-outline-primary">Rétablis la vérité</a>
+
+  <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-outline-primary">Change ce gossip !</a>
 </div>
 
 <div class="container">
-    <% @comments.each do |com| %>
-    <div class="form-control">
-      <p><strong><%= com.anonymous_commentor %></strong></p>
-      <p><%= com.body %></p>
-      <a href="<%= edit_gossip_comment_path(com.id) %>" class="btn btn-outline-info">Modifie ton com'</a>
+    <% @comments.each_with_index do |comm, i| %>
+    <div class="form-control border-info">
+      <p><strong><%= comm.anonymous_commentor %></strong> - <span class="text-muted"><%= i+1 %></span></p>
+      <p><%= comm.body %></p>
+
+      <a href="<%= edit_gossip_comment_path(comm.id) %>" class="btn btn-outline-info">Modifie ton com'</a>
     </div>
     <% end %>
 </div>
-
-
 
 <div class="container">
   <%= form_for([@gossip, @comment], {action: "create"}) do |com| %>
@@ -30,11 +29,6 @@
   </div>
   <div class="form-group">
       <button type=submit class="btn btn-info">Lâche ton com'</button>
-  </div>
-
   <% end %>
-</div>
-
-<div class="container">
   <a href="<%= gossips_path %>" class="btn btn-success">Retour à la liste</a>
 </div>
