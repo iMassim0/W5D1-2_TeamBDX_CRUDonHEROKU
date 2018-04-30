@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Index des gossips</h1>
+
+  <% @gossips.each do |gossip| %>
+    <h2><%= gossip.anonymous_author %></h2>
+    <p><%= gossip.content %></p>
+    <p><a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Lire la suite</a></p>
+  <% end %>
+
+</div>

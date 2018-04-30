@@ -1,0 +1,9 @@
+<div class="container">
+<h1>Gossip n°<%= @gossip.id %></h1>
+<p>Ecrit par <%= @gossip.anonymous_author %></p>
+<p><%= @gossip.content %></p>
+</div>
+<div class="container">
+  <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-primary">Modifier le gossip</a>
+  <a href="<%= gossips_path %>" class="btn btn-success">Retour à la liste</a>
+</div>
