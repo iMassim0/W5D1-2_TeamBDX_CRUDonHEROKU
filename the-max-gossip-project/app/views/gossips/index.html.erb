@@ -1,0 +1,12 @@
+<h1>Il y a en tout : <%= @gossips.size %> gossips sur la plateforme.</h1>
+
+  <% @gossips.each do |gossip| %>
+
+    <h2>By <%= gossip.anonymous_author %>.</h2>
+    <p>
+      <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Ouvrir le Gossip</a>
+      <a href="<%= edit_gossip_path(gossip.id) %>" class="btn btn-default">Modifier le Gossip</a>
+      <a href="<%= gossip_path(gossip.id) %>" class="btn btn-danger" data-method="DELETE" data-confirm="On supprime vraiment ?">Supprimer le Gossip</a>
+    </p>
+
+  <% end %>

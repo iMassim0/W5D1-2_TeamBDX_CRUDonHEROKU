@@ -1,0 +1,28 @@
+<h1>Création de Gossip</h1>
+
+<%= form_for @gossip, url: {action: "create"} do |g| %>
+
+  <div class="form-group">
+
+    <label>Pseudo</label>
+
+    <%= g.text_field :anonymous_author, class: 'form-control' %>
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Contenu du Gossip</label>
+
+    <%= g.text_area :content, size: "50x3", class: 'form-control' %>
+
+  </div>
+
+  <div class="form-group">
+
+    <button type="submit">Créer l'article</button>
+  <% end %>
+
+  </div>
+
+

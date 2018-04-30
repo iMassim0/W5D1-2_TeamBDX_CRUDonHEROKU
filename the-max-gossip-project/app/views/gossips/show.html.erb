@@ -1,0 +1,10 @@
+<h1>Hey, voici le gossip n°<%= @gossip.id%></h1>
+
+  <h2>By <%= @gossip.anonymous_author %>.</h2>
+
+  <p><%= @gossip.content %></p>
+
+  <p>
+    <a href="<%= gossips_path %>">Retour sur la page principale</a>
+
+  </p>
