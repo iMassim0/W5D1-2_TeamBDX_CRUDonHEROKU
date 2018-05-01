@@ -44,11 +44,11 @@ Vous pouvez maintenant observer le fonctionnement de l'application (console of c
 
 the-movie-database :
 ```
-  @ https://movies-team-bdx.herokuapp.com/
+  @ [https://movies-team-bdx.herokuapp.com/](https://movies-team-bdx.herokuapp.com/)
 ```
 the-gossip-project :
 ```
-  @ https://gossips-team-bdx.herokuapp.com/
+  @ [https://gossips-team-bdx.herokuapp.com/](https://gossips-team-bdx.herokuapp.com/)
 ```
 
 *PS : la console est totalement possible pour aller tester des créations de Movie/Director ou Gossip/Comment.*
