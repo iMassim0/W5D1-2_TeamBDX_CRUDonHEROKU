@@ -37,7 +37,7 @@ Une fois placé(e) dans le dossier souhaité, effectuer la commande suivante :
 ```
 Vous pouvez maintenant observer le fonctionnement de l'application (console of course) via l'adresse :
 ```
-  @ http://http://localhost:3000/
+  @ http://localhost:3000/
 ```
 
   - Sur les sites déployés :
