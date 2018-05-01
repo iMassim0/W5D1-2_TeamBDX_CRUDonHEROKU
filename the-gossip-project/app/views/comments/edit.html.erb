@@ -2,7 +2,7 @@
 <h3>C'était vraiment n'importe quoi ce com'...</h3>
 
         <%= form_for @comment, url: {action: "update"} do |com| %>
-
+        <h4 class="text-danger" id="error"><%= flash[:error] %></h4>
         <div class="form-group">
             <label>Pseudo :</label><br>
             <%= com.text_field :anonymous_commentor, class: "text-muted" %><br>
@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             <button type=submit class="btn btn-info">Ce com' a maintenant la classe !</button>
-              <%= link_to 'Vire moi ça !', [@comment.gossip, @comment], class: 'btn btn-danger',
+              <%= link_to 'Vire moi ça !', [@comment.gossip, @comment], class: 'btn btn-outline-danger',
                method: :delete,
                data: { confirm: 'Tu veux vraiment le virer ?' } %>
             <a href="<%= gossips_path %>" class="btn btn-success">Retour aux gossips</a>

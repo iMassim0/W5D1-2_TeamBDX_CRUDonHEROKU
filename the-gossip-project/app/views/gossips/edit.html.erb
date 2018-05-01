@@ -1,19 +1,19 @@
-<div class="container" style="padding-top: 20px">
-<h4>Edition du gossip n°<%= @gossip.id %></h4>
+<div class="container">
+<h3>Change moi ce gossip...</h3>
 
         <%= form_for @gossip, url: {action: "update"} do |g| %>
-
+        <h4 class="text-danger" id="error"><%= flash[:error] %></h4>
         <div class="form-group">
-            <label>Anonymous author :</label><br>
+            <label>Le pseudo va toujours là :</label><br>
             <%= g.text_field :anonymous_author, class: "text-muted" %><br>
         </div>
         <div class="form-group">
-            <label>Content :</label><br>
+            <label>Et le reste ici !</label><br>
             <%= g.text_area :content, size: "50x3", class: "text-muted" %><br>
         </div>
         <div class="form-group">
             <button type=submit class="btn btn-primary">Modifier le gossip</button>
-            <a href="<%= gossip_path(@gossip.id) %>" class="btn btn-danger" data-method="DELETE" data-confirm="On supprime vraiment ?">Supprimer le gossip</a>
+            <a href="<%= gossip_path(@gossip.id) %>" class="btn btn-outline-danger" data-method="DELETE" data-confirm="On supprime vraiment ?">Supprimer le gossip</a>
         </div>
 
         <% end %>

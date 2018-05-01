@@ -10,7 +10,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to gossip_path(@comment.gossip_id)
     else
-      redirect_to root_path
+      flash[:error] = 'Rentre bien un pseudo et un texte !'
+      redirect_to gossip_path(@comment.gossip_id)
     end
   end
 
@@ -21,7 +22,12 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:gossip_id])
     @comment.update(params_comment)
-    redirect_to gossip_path(@comment.gossip_id)
+    if @comment.save
+      redirect_to gossip_path(@comment.gossip_id)
+    else
+      flash[:error] = 'Rentre bien un pseudo et un texte !'
+      redirect_to edit_gossip_comment_path
+    end
   end
 
   def destroy

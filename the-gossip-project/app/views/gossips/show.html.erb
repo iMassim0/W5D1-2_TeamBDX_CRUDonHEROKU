@@ -1,30 +1,42 @@
-  <div class="container form-control border rounded border-primary">
-<h3>Gossip écrit par <strong><%= @gossip.anonymous_author %></strong> :</h3>
-<p><%= @gossip.content %></p>
-
-  <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-outline-primary">Change ce gossip !</a>
+<div class="container form-control border rounded border-primary">
+    <h3>
+      <strong><%= @gossip.anonymous_author %></strong> a balancé que...
+    </h3>
+    <p class="bg-primary text-white post-content">
+      <%= @gossip.content %>
+    </p>
+    <a href="<%= edit_gossip_path(@gossip.id) %>" class="btn btn-outline-primary">
+      Change ce gossip !
+    </a>
 </div>
 
 <div class="container">
     <% @comments.each_with_index do |comm, i| %>
-    <div class="form-control border-info">
-      <p><strong><%= comm.anonymous_commentor %></strong> - <span class="text-muted"><%= i+1 %></span></p>
-      <p><%= comm.body %></p>
-
-      <a href="<%= edit_gossip_comment_path(comm.id) %>" class="btn btn-outline-info">Modifie ton com'</a>
-    </div>
+        <div class="form-control border-info container">
+          <p>
+            <span class="text-muted">Com' <%= i+1 %></span> - par : <strong><%= comm.anonymous_commentor %></strong>
+          </p>
+          <p class="bg-info text-white post-content">
+            <%= comm.body %>
+          </p>
+          <a href="<%= edit_gossip_comment_path(comm.id) %>" class="btn btn-outline-info">
+            Modifie ton com'
+          </a>
+        </div>
     <% end %>
 </div>
 
-<div class="container">
+<div class="container form-control border border-warning rounded">
   <%= form_for([@gossip, @comment], {action: "create"}) do |com| %>
 
+  <p><strong>Commente ce gossip à ton tour !</strong></p>
+  <h4 class="text-danger" id="error"><%= flash[:error] %></h4>
   <div class="form-group">
-      <label>Anonymous Commentor :</label><br>
+      <label>Mets ton pseudo :</label><br>
       <%= com.text_field :anonymous_commentor %><br>
   </div>
   <div class="form-group">
-      <label>Comment :</label><br>
+      <label>Dis nous tout !</label><br>
       <%= com.text_area :body, size: "50x3" %><br>
   </div>
   <div class="form-group">

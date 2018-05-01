@@ -1,14 +1,14 @@
 <div class="container">
-<h1>Création d'un nouveau Gossip</h1>
+<h3>Raconte nous ton nouveau Gossip...</h3>
 
         <%= form_for @gossip, url: {action: "create"} do |g| %>
-
+        <h4 class="text-danger" id="error"><%= flash[:error] %></h4>
         <div class="form-group">
-            <label>Anonymous author :</label><br>
+            <label>Ton pseudo ici :</label><br>
             <%= g.text_field :anonymous_author %><br>
         </div>
         <div class="form-group">
-            <label>Content :</label><br>
+            <label>Vazy balance !</label><br>
             <%= g.text_area :content, size: "50x3" %><br>
         </div>
         <div class="form-group">

@@ -8,7 +8,8 @@ class GossipsController < ApplicationController
     if @gossip.save
       redirect_to gossip_path(@gossip.id)
     else
-      redirect_to root_path
+      flash[:error] = 'Rentre bien un pseudo et un texte !'
+      redirect_to new_gossip_path
     end
   end
 
@@ -31,7 +32,12 @@ class GossipsController < ApplicationController
   def update
     @gossip = Gossip.find(params[:id])
     @gossip.update(params_gossip)
-    redirect_to gossip_path(@gossip.id)
+    if @gossip.save
+      redirect_to gossip_path(@gossip.id)
+    else
+      flash[:error] = 'Rentre bien un pseudo et un texte !'
+      redirect_to edit_gossip_path
+    end
   end
 
   def index

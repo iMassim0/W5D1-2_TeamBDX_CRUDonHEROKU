@@ -1,11 +1,22 @@
 <div class="container">
-  <h1>Index des gossips</h1>
 
-  <% @gossips.each do |gossip| %>
-    <h4><%= gossip.anonymous_author %></h4>
-    <span><%= gossip.content %></span>
+  <div class="bg-dark rounded text-white" style="text-align: center; padding: 8px 0px;">
+    <h2>Index des gossips</h2>
+  </div>
+
+  <div class="container">
+    <% @gossips.each do |gossip| %>
+      <div class="form-control border border-primary rounded container">
+        <h4><%= gossip.anonymous_author %></h4>
+        <div class="bg-primary text-white post-content"><%= gossip.content %></div>
         <p class="text-muted"><%= gossip.comments.count %> com'</p>
-    <p><a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Voir les comms !</a></p>
-  <% end %>
+        <p><a href="<%= gossip_path(gossip.id) %>" class="btn btn-info text-white">Voir les comms !</a></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= link_to "Balance ton gossip", new_gossip_path, class: "btn-lg btn-success" %>
+  </div>
 
 </div>
